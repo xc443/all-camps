@@ -7,7 +7,7 @@ Created on Tue Dec 17 15:58:10 2019
 
 import tabula
 import numpy as np
-df = tabula.read_pdf("C:/Users/zhuyi/Desktop/all-camps/backend/routes/base_table_v2.pdf", pages='all')
+df = tabula.read_pdf("'C:/Users/92938/mern-exercise-tracker/backend/routes/base_table_v2.pdf", pages='all')
 df=np.array(df)
 #df=df.to_string(index=False)
 #df=df.split('NaN')
