@@ -9,7 +9,7 @@ const storage = multer.diskStorage({
             cb(null,__dirname+'/up');
         },
         filename:(req,file,cb)=>{
-            cb(null,"base_table_v2.pdf");
+            cb(null,"blank_table.pdf");
         }
     })
 

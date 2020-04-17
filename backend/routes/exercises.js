@@ -70,7 +70,7 @@ router.route('/update/:id').post((req, res) => {
 router.route('/py/p').get((req,res)=>{
     var rr=-1;
     const { spawn } = require('child_process');
-    const bat = spawn('python', ['C:/Users/92938/mern-exercise-tracker/backend/routes/pdfextract.py']);
+    const bat = spawn('python', ['./routes/pdfextract.py']);
     
     bat.stdout.on('data', (data) => {
       console.log(data.toString());
@@ -117,7 +117,7 @@ router.route('/py/pdfget').post((req,res)=>{
     // })
 
     const { spawn } = require('child_process');
-    py    = spawn('python', ['C:/Users/92938/mern-exercise-tracker/backend/routes/allcamps.py']);
+    py    = spawn('python', ['./routes/allcamps.py']);
     data = {"firstname": req.body.firstname, "lastname": req.body.lastname};
     dataString = '';
     console.log(data);

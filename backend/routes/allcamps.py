@@ -138,12 +138,12 @@ class allcamps:
         writer = PdfFileWriter()
         self.set_need_appearances_writer(writer)
         print(1)
-        fp = open("C:/Users/92938/mern-exercise-tracker/backend/routes/abc3.pdf", 'rb')
+        fp = open("./routes/up/blank_table.pdf", 'rb')
 #        pdf_writer = PyPDF2.PdfFileWriter()
         parser = PDFParser(fp)
         doc = PDFDocument(parser)
         fields = resolve1(doc.catalog['AcroForm'])['Fields']
-        myfile = PdfFileReader("C:/Users/92938/mern-exercise-tracker/backend/routes/abc3.pdf")
+        myfile = PdfFileReader("./routes/up/blank_table.pdf")
         first_page = myfile.getPage(self.page)
 #for i in fields:
 #    field = resolve1(i)
