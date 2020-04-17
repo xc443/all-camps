@@ -59,7 +59,7 @@ export default class CreateExercises extends Component{
         }
     }
     test(){
-        axios.get('http://localhost:5000/exercises/py/p')
+        axios.post('http://localhost:5000/exercises/py/pdfget',{firstname:this.state.firstname,lastname:this.state.lastname})
         .then((response)=>{
             alert(response.data)
     
@@ -220,7 +220,7 @@ export default class CreateExercises extends Component{
     render(){
         return(
         <div>
-            <h3>Create New Camp</h3>
+            <h3>Fill Out New Camp Form</h3>
             
                 <table >
                 <tr><th><div className="form-group">
