@@ -70,7 +70,7 @@ router.route('/update/:id').post((req, res) => {
 router.route('/py/p').get((req,res)=>{
     var rr=-1;
     const { spawn } = require('child_process');
-    const bat = spawn('python', ['C:/Users/92938/mern-exercise-tracker/backend/routes/pdfextract.py']);
+    const bat = spawn('python', ['C:/Users/zhuyi/Desktop/all-camps/backend/routes/pdfextract.py']);
     
     bat.stdout.on('data', (data) => {
       console.log(data.toString());
@@ -91,21 +91,69 @@ router.route('/py/p').get((req,res)=>{
 
 
 })
-router.route('/py/pdfget').get((req,res)=>{
-    var mem= ""
-    Exercise.find({lastname:req.body.lastname,firstname:req.body.firstname})
-    .then((exercises )=>{
-        //  res.status(200).json(exercises)
+
+
+router.route('/py/pdfget').post((req,res)=>{
+    // var mem= ""
+    // Exercise.find({lastname:req.body.lastname,firstname:req.body.firstname})
+    // .then((exercises )=>{
+    //     //  res.status(200).json(exercises)
         
 
 
 
 
+    // }).catch((e)=>{
+    //     console.log(e)
+    // })
+
+    // var mem= ""
+    // Exercise.find({lastname:req.body.lastname,firstname:req.body.firstname})
+    // .then((exercises )=>{
+        
+    //      res.status(200).json(exercises)
+    // }).catch((e)=>{
+    //     console.log(e)
+    // })
+
+    const { spawn } = require('child_process');
+    py    = spawn('python', ['C:/Users/zhuyi/Desktop/all-camps/backend/routes/read_from_js.py']);
+    data = {"firstname": req.body.firstname, "lastname": req.body.lastname};
+    dataString = '';
+    console.log(data);
+    
+    console.log(JSON.stringify(data));
+    py.stdout.on('data', (data) => {
+    dataString += data.toString();
+    // console.log('output==',data.toString());
+    });
+    py.stdout.on('end', function(){
+    console.log('first name is ',dataString);
+    });
+    py.stdin.write(JSON.stringify(data));
+    py.stdin.end();
+
+    py.stderr.on('data', (data) => {
+        console.error(data.toString());
+        rr=data.toString();
+      });
+      
+      py.on('exit', (code) => {
+        console.log(`Child exited with code ${code}`);
+      });
+})
+
+
+router.route('/').post((req,res)=>{
+    var mem= ""
+    Exercise.find({lastname:req.body.lastname,firstname:req.body.firstname})
+    .then((exercises )=>{
+        
+         res.status(200).json(exercises)
     }).catch((e)=>{
         console.log(e)
     })
 })
-
 
 
 module.exports = router;
