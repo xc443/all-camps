@@ -304,12 +304,13 @@ export default class CreateExercises extends Component{
                 </tr>
                 </table>
                 <div className="form-group">
-                        <label>Which Pages to Fill Out:   </label><br></br>
+                        <label><b>Which Pages to Fill Out:</b>   </label><br></br>
                         <input type="text"
                             required
-                            className="form-control"
+                            // className="form-control"
                             value={this.state.page}
                             onChange={this.onChangepage}
+                            size="20"
                             />
                     </div>
                     <button type="submit" value="Create New Camp" className="btn btn-primary" onClick={this.test}>Get pdf</button>
