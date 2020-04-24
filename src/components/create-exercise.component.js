@@ -38,7 +38,7 @@ export default class CreateExercises extends Component{
         }
     }
     test(){
-        axios.post('http://localhost:5000/exercises/py/pdfget',{firstname:this.state.firstname,lastname:this.state.lastname,page:this.state.page})
+        axios.post('http://localhost:5000/exercises/py/pdfget',{firstname:this.state.firstname,page:this.state.page})
         .then((response)=>{
             alert(response.data)
     
@@ -301,7 +301,7 @@ export default class CreateExercises extends Component{
                     <button type="submit" value="Create New Camp" className="btn btn-primary" onClick={this.pdfget}>Get new table</button>
                     </div>
                     <div className="form-group">
-                        <label>Which Page to Start: </label>
+                        <label>Which Pages to Fill Out: </label>
                         <input value={this.state.page} placeholder=""/>
                     </div>
                     <button type="submit" value="Create New Camp" className="btn btn-primary" onClick={this.test}>Get pdf</button>

@@ -97,7 +97,7 @@ router.route('/py/pdfget').post((req,res)=>{
 
     const { spawn } = require('child_process');
     py    = spawn('python', ['./routes/allcamps.py']);
-    data = {"firstname": req.body.firstname, "lastname": req.body.lastname};
+    data = {"firstname": req.body.firstname, "page": req.body.page};
     dataString = '';
     console.log(data);
     
