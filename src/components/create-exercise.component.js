@@ -5,29 +5,6 @@ import "react-datepicker/dist/react-datepicker.css";
 import jsPDF from 'jspdf'
 import 'jspdf-autotable';
 
-// function postData() {
-//     $.ajax({
-//         type: "POST",
-//         url: "/a.py",
-//         // data: { param: input },
-//         success: callbackFunc
-//     });
-// }
-// function callbackFunc(response) {
-//     // do something with the response
-//     console.log(response);
-// }
-
-// postData('data to process');
-
-// function pdfget(){
-//     axios.get('http://localhost:5000/exercises/py/pdfget')
-//     .then((response)=>{
-//         alert(response.data)
-
-//     })
-// }
-
 export default class CreateExercises extends Component{
     constructor(props){
         super(props);
@@ -38,6 +15,7 @@ export default class CreateExercises extends Component{
         this.onChangehomeaddress =  this.onChangehomeaddress.bind(this); 
         this.onChangecontactnumber =   this.onChangecontactnumber.bind(this);
         this.onChangebirthdate = this.onChangebirthdate.bind(this);
+        this.onChangepage = this.onChangepage.bind(this); 
         this.onclickok=this.onclickok.bind(this);
         this.test=this.test.bind(this);
         this.pdfget=this.pdfget.bind(this);
@@ -55,11 +33,12 @@ export default class CreateExercises extends Component{
             genders:[],
             homeaddresss:[],
             contactnumbers:[],
+            page:[]
             
         }
     }
     test(){
-        axios.post('http://localhost:5000/exercises/py/pdfget',{firstname:this.state.firstname,lastname:this.state.lastname})
+        axios.post('http://localhost:5000/exercises/py/pdfget',{firstname:this.state.firstname,lastname:this.state.lastname,page:this.state.page})
         .then((response)=>{
             alert(response.data)
     
@@ -195,6 +174,11 @@ export default class CreateExercises extends Component{
             birthdate:e.target.value
         });
     }
+    onChangepage(e){
+        this.setState({
+            page:e.target.value
+        });
+    }
     onSubmit(e){
         e.preventDefault();
         const exercise ={
@@ -315,6 +299,10 @@ export default class CreateExercises extends Component{
                 <tr><div className="form-group">
                     {/* <input type="submit" value="Create New Camp" className="btn btn-primary" /> */}
                     <button type="submit" value="Create New Camp" className="btn btn-primary" onClick={this.pdfget}>Get new table</button>
+                    </div>
+                    <div className="form-group">
+                        <label>Which Page to Start: </label>
+                        <input value={this.state.page} placeholder=""/>
                     </div>
                     <button type="submit" value="Create New Camp" className="btn btn-primary" onClick={this.test}>Get pdf</button>
                 

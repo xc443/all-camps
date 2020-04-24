@@ -94,27 +94,6 @@ router.route('/py/p').get((req,res)=>{
 
 
 router.route('/py/pdfget').post((req,res)=>{
-    // var mem= ""
-    // Exercise.find({lastname:req.body.lastname,firstname:req.body.firstname})
-    // .then((exercises )=>{
-    //     //  res.status(200).json(exercises)
-        
-
-
-
-
-    // }).catch((e)=>{
-    //     console.log(e)
-    // })
-
-    // var mem= ""
-    // Exercise.find({lastname:req.body.lastname,firstname:req.body.firstname})
-    // .then((exercises )=>{
-        
-    //      res.status(200).json(exercises)
-    // }).catch((e)=>{
-    //     console.log(e)
-    // })
 
     const { spawn } = require('child_process');
     py    = spawn('python', ['./routes/allcamps.py']);
