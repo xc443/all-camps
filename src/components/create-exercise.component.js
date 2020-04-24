@@ -300,15 +300,15 @@ export default class CreateExercises extends Component{
                     {/* <input type="submit" value="Create New Camp" className="btn btn-primary" /> */}
                     <button type="submit" value="Create New Camp" className="btn btn-primary" onClick={this.pdfget}>Get new table</button>
                     </div>
-                    <div className="form-group">
-                        <label>Which Pages to Fill Out: </label>
+                    
+                </tr>
+                </table>
+                <div className="form-group">
+                        <label>Which Pages to Fill Out:   </label><br></br>
                         <input value={this.state.page} placeholder=""/>
                     </div>
                     <button type="submit" value="Create New Camp" className="btn btn-primary" onClick={this.test}>Get pdf</button>
                 
-                </tr>
-                </table>
-            
             
         </div>
         )
