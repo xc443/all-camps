@@ -78,12 +78,13 @@ export default class CreateUsers extends Component{
                 </form>
                 <form onSubmit={this.onSubmit}>
                     <div className="form-group">
-                        <label>Username: </label>
+                        <label>Username: </label><br></br>
                         <input type="text"
                             required
-                            className="form-control"
+                            // className="form-control"
                             value={this.state.username}
                             onChange={this.onChangeUsername}
+                            size="20"
                             />
                     </div>
                     
