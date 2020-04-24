@@ -172,11 +172,16 @@ class allcamps:
                         writer.updatePageFormFieldValues(first_page, fields={str(name)[2:len(str(name))-1]:str(x[p])})
         #    print ('{0}: {1}'.format(name, value))
         writer.addPage(first_page)
-        with open("newfile.pdf","wb") as new:
-            writer.write(new)
+        return writer
+
 if __name__ == "__main__":  
     w = web()
     webreadin = w.readinpara()
-    f = allcamps(webreadin['firstname'],6)
+    page = webreadin['page']
+    pages = page.split(",")
+    for i in pages:
+        f = allcamps(webreadin['firstname'], int(i))
     
-    f.pdffill()
+    writer = f.pdffill()
+    with open("newfile.pdf","wb") as new:
+        writer.write(new)
