@@ -18,7 +18,7 @@ export default class CreateExercises extends Component{
         this.onChangepage = this.onChangepage.bind(this); 
         this.onclickok=this.onclickok.bind(this);
         this.test=this.test.bind(this);
-        this.pdfget=this.pdfget.bind(this);
+        // this.pdfget=this.pdfget.bind(this);
         this.state={            
             firstname:[],
             lastname:[],
@@ -44,45 +44,45 @@ export default class CreateExercises extends Component{
     
         })
     }
-    pdfget(){
-        axios.get('http://localhost:5000/exercises/py/p')
-        .then((response)=>{
-            // alert(response.data)
+    // pdfget(){
+    //     axios.get('http://localhost:5000/exercises/py/p')
+    //     .then((response)=>{
+    //         // alert(response.data)
 
     
         
     
 
-            // Example From https://parall.ax/products/jspdf
-            var doc = new jsPDF('p', 'pt');
+    //         // Example From https://parall.ax/products/jspdf
+    //         var doc = new jsPDF('p', 'pt');
             
-            //  doc.text(20, 20,'First name: '+ this.state.firstname)
-            // doc.text(20, 20,response.data[0].trim("\n")+': '+ this.state.firstname)
-            // doc.text(20, 40, 'Last name: '+this.state.lastname)
-            // doc.text(20, 60, 'Nickname: '+this.state.nickname)
-            // doc.text(20, 80, 'Date of Birth: '+ this.state.birthdate)
-            // doc.text(20, 100, 'Gender: '+ this.state.gender)
+    //         //  doc.text(20, 20,'First name: '+ this.state.firstname)
+    //         // doc.text(20, 20,response.data[0].trim("\n")+': '+ this.state.firstname)
+    //         // doc.text(20, 40, 'Last name: '+this.state.lastname)
+    //         // doc.text(20, 60, 'Nickname: '+this.state.nickname)
+    //         // doc.text(20, 80, 'Date of Birth: '+ this.state.birthdate)
+    //         // doc.text(20, 100, 'Gender: '+ this.state.gender)
 
-            // doc.text(20, 120, 'Home address: '+ this.state.homeaddress)
-            // doc.text(20, 140, 'Contact Number: '+ this.state.contactnumber)
-            // var col=['First name','Last name:']
-            doc.autoTable({
-                head: [['Personal Information','Content']],
-                body: [
-                    [response.data[0].trim("\n"), this.state.firstname],
-                    [response.data[1].trim("\n"), this.state.lastname],
-                    [response.data[2].trim("\n"), this.state.nickname],
-                    [response.data[3].trim("\n"), this.state.birthdate],
-                    [response.data[4].trim("\n"), this.state.gender],
-                    [response.data[5].trim("\n"), this.state.homeaddress],
-                    [response.data[6].trim("\n"), this.state.contactnumber],
+    //         // doc.text(20, 120, 'Home address: '+ this.state.homeaddress)
+    //         // doc.text(20, 140, 'Contact Number: '+ this.state.contactnumber)
+    //         // var col=['First name','Last name:']
+    //         doc.autoTable({
+    //             head: [['Personal Information','Content']],
+    //             body: [
+    //                 [response.data[0].trim("\n"), this.state.firstname],
+    //                 [response.data[1].trim("\n"), this.state.lastname],
+    //                 [response.data[2].trim("\n"), this.state.nickname],
+    //                 [response.data[3].trim("\n"), this.state.birthdate],
+    //                 [response.data[4].trim("\n"), this.state.gender],
+    //                 [response.data[5].trim("\n"), this.state.homeaddress],
+    //                 [response.data[6].trim("\n"), this.state.contactnumber],
                     
-                ]
-            })
-            // Save the Data
-            doc.save('Generated'.pdf)
-        })
-    }
+    //             ]
+    //         })
+    //         // Save the Data
+    //         doc.save('Generated'.pdf)
+    //     })
+    // }
     onclickok(){
         axios.post('http://localhost:5000/exercises/',{firstname:this.state.firstname,lastname:this.state.lastname})
         .then((response)=>{

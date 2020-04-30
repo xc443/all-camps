@@ -19,19 +19,37 @@ router.route('/').post((req,res)=>{
 router.route('/add').post((req,res) => {
     const firstname = req.body.firstname;
     const lastname = req.body.lastname;
+    const childname = req.body.firstname + req.body.lastname;
     const nickname = req.body.nickname; 
     const gender = req.body.gender;   
     const homeaddress = req.body.homeaddress;  
     const contactnumber = req.body.contactnumber;  
-    const birthdate = Date.parse(req.body.date);
+    const birthdate = Date.parse(req.body.birthdate);
+    const age = req.body.age;  
     const newExercise = new Exercise({
         firstname,
         lastname,
+        childname,
         nickname,
         gender,
         homeaddress,
         contactnumber,
         birthdate,
+        age,
+        homephone,
+        workphone,
+        parent1name,
+        parent1relationship,
+        parent1phone,
+        parent1work,
+        parent2name,
+        parent2relationship,
+        parent2phone,
+        parent2work,
+        email,
+        doctorname,
+        doctorphone,
+        allergies    
 
     });
     newExercise.save()

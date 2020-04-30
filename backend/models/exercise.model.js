@@ -4,6 +4,7 @@ const exerciseSchema = new Schema({
     firstname: {type:String,required:true},
     lastname: {type: String, required: true},
     nickname:{ type: String, required: true},
+    childname:{type:String},
     gender:{ type: String, required: true},
     homeaddress:{ type: String, required: true},
     contactnumber:{ type: String, required: true},
