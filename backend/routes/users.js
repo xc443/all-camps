@@ -30,8 +30,8 @@ router.route('/add').post((req,res) => {
 
 router.post('/up',upload.single('upl'),(req,res)=>{
         res.statusCode=200;
-        res.redirect('http://localhost:3000/')
-        console.log("received");
+        res.redirect('http://localhost:3000/create')
+        console.log("receivedusers");
     })
 
 

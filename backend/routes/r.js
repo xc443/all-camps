@@ -14,8 +14,8 @@ const storage = multer.diskStorage({
 const upload = multer({storage:storage})
 router.post('/up',upload.single('upl'),(req,res)=>{
     res.statusCode=200;
-    res.redirect('http://localhost:3000/')
-    console.log("received");
+    res.redirect('http://localhost:3000/info')
+    console.log("receivedr");
 })
 
 

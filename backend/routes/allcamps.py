@@ -28,7 +28,7 @@ Created on Thu Apr  9 22:40:40 2020
 #print(ff)
 
 from pymongo import MongoClient
-
+import re
 from pdfminer.pdfparser import PDFParser
 from pdfminer.pdfdocument import PDFDocument
 from pdfminer.pdftypes import resolve1
@@ -70,7 +70,7 @@ class allcamps:
 #        print(x['firstname'])
 
 
-    def set_need_appearances_writer(self,writer: PdfFileWriter):
+    def set_need_appearances_writer(self,pdf,writer: PdfFileWriter):
         # See 12.7.2 and 7.7.2 for more information: http://www.adobe.com/content/dam/acom/en/devnet/acrobat/pdfs/PDF32000_2008.pdf
         try:
             catalog = writer._root_object
@@ -79,15 +79,19 @@ class allcamps:
                 writer._root_object.update({
                     NameObject("/AcroForm"): IndirectObject(len(writer._objects), 0, writer)
                 })
-    
+            if "/AcroForm" in pdf.trailer["/Root"]:
+                
+                pdf.trailer["/Root"]["/AcroForm"].update(
+                    {NameObject("/NeedAppearances"): BooleanObject(True)}
+                )
             need_appearances = NameObject("/NeedAppearances")
             writer._root_object["/AcroForm"][need_appearances] = BooleanObject(True)
             # del writer._root_object["/AcroForm"]['NeedAppearances']
-            return writer
+            return writer,pdf
     
         except Exception as e:
             print('set_need_appearances_writer() catch : ', repr(e))
-            return writer
+            return writer,pdf
 
     def dic(self):
         a = {}
@@ -134,16 +138,19 @@ class allcamps:
     def pdffill(self):
         x = self.start_server()
         mapping = self.dic()
-        
+        myfile = PdfFileReader("./routes/up/blank_table.pdf")
         writer = PdfFileWriter()
-        self.set_need_appearances_writer(writer)
+        writer , myfile = self.set_need_appearances_writer(myfile,writer)
+        if "/AcroForm" in writer._root_object:
+            writer._root_object["/AcroForm"].update(
+            {NameObject("/NeedAppearances"): BooleanObject(True)})
         print(1)
         fp = open("./routes/up/blank_table.pdf", 'rb')
 #        pdf_writer = PyPDF2.PdfFileWriter()
         parser = PDFParser(fp)
         doc = PDFDocument(parser)
         fields = resolve1(doc.catalog['AcroForm'])['Fields']
-        myfile = PdfFileReader("./routes/up/blank_table.pdf")
+        
         first_page = myfile.getPage(self.page)
 #for i in fields:
 #    field = resolve1(i)
@@ -162,9 +169,16 @@ class allcamps:
         for p in x.keys():
         
             for i in fields:
+                temp = []
                 field = resolve1(i)
-                name, value = field.get('T'), field.get('V')        
-                if str(name) in mapping.keys() and p in mapping[str(name)]:
+                name, value = field.get('T'), field.get('V')   
+                label = (re.split(b'\t|\x90s',name))
+                q = ""
+                for j in label:
+                    temp.append(j.decode('utf-8').lower())
+                    q = q+(j.decode('utf-8').lower())
+                temp.append(q)
+                if str(name) in mapping.keys() and p in mapping[str(name)] or p in temp:
         
                     if p == "birthdate":
                         writer.updatePageFormFieldValues(first_page, fields={str(name)[2:len(str(name))-1]:str(x[p])[:10]})
