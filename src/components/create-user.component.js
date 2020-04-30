@@ -72,10 +72,10 @@ export default class CreateUsers extends Component{
                 <h3>Create New User</h3>
                 {/* <input type="file" id="pdf_upload" name="pdf_upload" accept=".pdf" onChange={this.onChangeHandler}/>
                 <button type="button" className="btn btn-success btn-block" onClick={this.onClickHandler}>Upload</button>  */}
-                <form action="http://localhost:5000/users/up" enctype="multipart/form-data" method = "POST">
+                {/* <form action="http://localhost:5000/users/up" enctype="multipart/form-data" method = "POST">
                     <input type="file" name="upl" accept=".pdf"/>
                     <input type="submit" className="btn btn-primary" value="upload"/>
-                </form>
+                </form> */}
                 <form onSubmit={this.onSubmit}>
                     <div className="form-group">
                         <label>Username: </label><br></br>

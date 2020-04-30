@@ -204,8 +204,14 @@ export default class CreateExercises extends Component{
     render(){
         return(
         <div>
-            <h3>Fill Out New Camp Form</h3>
-            
+            <h3>Fill Out New Camp Form</h3><br></br>
+            <h5>Please Upload the Application Form (PDF only)</h5>
+            <form action="http://localhost:5000/users/up" enctype="multipart/form-data" method = "POST">
+                    <input type="file" name="upl" accept=".pdf"/>
+                    <input type="submit" className="btn btn-primary" value="upload"/>
+                </form>
+                <br></br>
+                <h5>Please Confirm Applicant's Information Below</h5>
                 <table >
                 <tr><th><div className="form-group">
                     <label>First Name: </label>
@@ -296,12 +302,7 @@ export default class CreateExercises extends Component{
                 </div></th>                 
                     
                 </tr>
-                <tr><div className="form-group">
-                    {/* <input type="submit" value="Create New Camp" className="btn btn-primary" /> */}
-                    <button type="submit" value="Create New Camp" className="btn btn-primary" onClick={this.pdfget}>Get new table</button>
-                    </div>
-                    
-                </tr>
+                
                 </table>
                 <div className="form-group">
                         <label><b>Which Pages to Fill Out:</b>   </label><br></br>
