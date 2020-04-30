@@ -13,7 +13,7 @@ export default class CreateUsers extends Component{
         this.onClickHandler=this.onClickHandler.bind(this);
         this.onSubmitBaseTable=this.onSubmitBaseTable.bind(this);
         
-
+        this.onChangeChildname = this.onChangeChildname.bind(this); 
         this.onChangeFirstname = this.onChangeFirstname.bind(this); 
         this.onChangeLastname = this.onChangeLastname.bind(this);
         this.onChangeNickname =  this.onChangeNickname.bind(this);
@@ -42,7 +42,7 @@ export default class CreateUsers extends Component{
             selectedFile: null,
             firstname:[],
             lastname:[],
-            childname:[],
+            childname:'',
             nickname:[],
             gender:[],
             homeaddress:[],
@@ -115,9 +115,9 @@ export default class CreateUsers extends Component{
 
     onSubmitBaseTable(e){
 
-        console.log(this.state.firstname.toString())
-        console.log(this.state.lastname.toString())
-        console.log(this.state.firstname.toString() + this.state.lastname.toString())
+        // console.log(this.state.firstname.toString())
+        // console.log(this.state.lastname.toString())
+        // console.log(this.state.firstname.toString() + this.state.lastname.toString())
         e.preventDefault();
         const exercise ={
 
@@ -128,6 +128,22 @@ export default class CreateUsers extends Component{
             gender:this.state.gender,
             homeaddress:this.state.homeaddress,
             contactnumber:this.state.contactnumber,
+            birthdate: this.state.birthdate,
+            age: this.state.age,
+            homephone: this.state.homephone,
+            workphone: this.state.workphone,  
+            parent1name: this.state.parent1name,
+            parent1relationship: this.state.parent1relationship,
+            parent1phone: this.state.parent1phone,
+            parent1work: this.state.parent1work,
+            parent2name: this.state.parent2name,
+            parent2relationship: this.state.parent2relationship,
+            parent2phone: this.state.parent2phone,
+            parent2work: this.state.parent2work,
+            email: this.state.email,
+            doctorname: this.state.doctorname,
+            doctorphone: this.state.doctorphone,
+            allergies: this.state.allergies
         }
         console.log(exercise)
         axios.post('http://localhost:5000/exercises/add',exercise)
@@ -148,9 +164,17 @@ export default class CreateUsers extends Component{
         });
     }
     onChangeLastname(e){
-        var str = ""
         this.setState({
             lastname: e.target.value,
+            // childname: this.state.lastname.toString() + this.state.firstname.toString()
+        });
+        
+    }
+
+    onChangeChildname(e){
+        var str = ""
+        this.setState({
+            childname: '',
             // childname: this.state.lastname.toString() + this.state.firstname.toString()
         });
         
@@ -286,7 +310,7 @@ export default class CreateUsers extends Component{
                     <input type="file" name="upl" accept=".pdf"/>
                     <input type="submit" className="btn btn-primary" value="upload"/>
                 </form> */}
-                <form onSubmit={this.onSubmit}>
+                {/* <form onSubmit={this.onSubmit}>
                     <div className="form-group">
                         <label>Username: </label><br></br>
                         <input type="text"
@@ -304,9 +328,9 @@ export default class CreateUsers extends Component{
                     <div className="form-group">
                         <input type="submit" value="Create User" className="btn btn-primary" />
                     </div>
-                    <div>{ this.state.mode ?  'Add successfully':'' }</div>                  
+                    <div>{ this.state.mode ?  'Add successfully':'' }</div>                   */}
 
-                </form>
+                {/* </form> */}
 
                 <form onSubmit={this.onSubmitBaseTable}>
                     <div className="form-group">
@@ -366,8 +390,13 @@ export default class CreateUsers extends Component{
                             <br></br>
                         <label>Birth Date:  </label>
                         <DatePicker
-                            // selected={this.state.birthdate}
+                        placeholderText="Click to select a date"
+                            selected={this.state.birthdate}
                             onChange={this.onChangeBirthdate}
+                            dateFormat="MM/dd/yyyy"
+                            isClearable
+                            showYearDropdown
+                            showMonthDropdown
                         />
                         <br></br>
                         <label>Age:  </label>
