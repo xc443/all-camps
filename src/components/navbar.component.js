@@ -18,7 +18,7 @@ export default class Navbar extends Component{
                     <Link to="/create" className="nav-link">Fill Application Form</Link>
                     </li>
                     
-                    <li className = "navbar=item">
+                    <li className = "navbar-item">
                     <Link to ="/scheduler" className = "nav-link">Scheduler</Link>
                     </li>
                 </ul>

@@ -23,7 +23,7 @@ function App() {
         < Route path="/user"  component ={CreateUser} />
         < Route path="/scheduler" component = {Scheduler}/>
         < Route path="/login" component = {LoginPage}/>
-        < Route path="/" component = {RegisterPage}/>
+        < Route path="/" exact component = {RegisterPage}/>
       </div>
     </Router>
   );
