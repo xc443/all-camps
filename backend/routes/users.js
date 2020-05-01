@@ -33,6 +33,20 @@ router.post('/up',upload.single('upl'),(req,res)=>{
         res.redirect('http://localhost:3000/create')
         console.log("receivedusers");
     })
+router.route('/registersuccess').post((req,res)=>{
+    // res.redirect('http://localhost:3000/info')
+    const username= req.body.email;
+    const password = req.body.password1;
+    const newUser = new User({
+            username,
+            password,
+})
+    newUser.save()
+        .then(() => res.json('User added!'))
+        .catch(err => res.status(400).json('Error: ' +err));
+
+    // res.redirect('http://localhost:3000/info')
+})
 
 
     // upload(req, res

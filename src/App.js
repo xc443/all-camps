@@ -9,6 +9,8 @@ import EditExercise from "./components/edit-exercise.component";
 import CreateExercise from "./components/create-exercise.component";
 import CreateUser from "./components/create-user.component";
 import Scheduler from "./components/scheduler";
+import LoginPage from "./components/login";
+import RegisterPage from "./components/reg"
 function App() {
   return (
     <Router>
@@ -20,6 +22,8 @@ function App() {
         < Route path="/create"  component ={CreateExercise} />
         < Route path="/user"  component ={CreateUser} />
         < Route path="/scheduler" component = {Scheduler}/>
+        < Route path="/login" component = {LoginPage}/>
+        < Route path="/" component = {RegisterPage}/>
       </div>
     </Router>
   );

@@ -8,6 +8,9 @@ const userSchema = new Schema({
         // trim: true,
         minlength: 1
     },
+    password:{
+        type: String
+    }
 },  
  {
     timestamps: true,
