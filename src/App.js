@@ -11,19 +11,21 @@ import CreateUser from "./components/create-user.component";
 import Scheduler from "./components/scheduler";
 import LoginPage from "./components/login";
 import RegisterPage from "./components/reg"
+import HomePage from "./components/homepage"
 function App() {
   return (
     <Router>
      <div className="container">
         <Navbar />
         <br />
+        < Route path="/" exact component ={HomePage} />
         < Route path="/info" exact component ={ExercisesList} />
         < Route path="/edit/:id" component ={EditExercise} />
         < Route path="/create"  component ={CreateExercise} />
         < Route path="/user"  component ={CreateUser} />
         < Route path="/scheduler" component = {Scheduler}/>
         < Route path="/login" component = {LoginPage}/>
-        < Route path="/" exact component = {RegisterPage}/>
+        < Route path="/reg" exact component = {RegisterPage}/>
       </div>
     </Router>
   );

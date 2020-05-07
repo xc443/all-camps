@@ -2,7 +2,8 @@ const router = require('express').Router();
 let Exercise = require('../models/exercise.model');
 
 router.route('/').get((req, res) => {
-    Exercise.find()
+//     Exercise.find()
+Exercise.find({username:req.body.username})
         .then(exercises => res.json(exercises))
         .catch(err => res.status(400).json('Error: ' + err));
 });
@@ -17,9 +18,11 @@ router.route('/').post((req,res)=>{
     })
 })
 router.route('/add').post((req,res) => {
+    const username = req.body.username
     const firstname = req.body.firstname;
     const lastname = req.body.lastname;
     const childname = req.body.firstname + " " + req.body.lastname;
+
     const nickname = req.body.nickname; 
     const gender = req.body.gender;   
     const homeaddress = req.body.homeaddress;  
@@ -41,6 +44,7 @@ router.route('/add').post((req,res) => {
     const doctorphone = req.body.doctorphone;
     const allergies = req.body.allergies;
     const newExercise = new Exercise({
+        username,
         firstname,
         lastname,
         childname,

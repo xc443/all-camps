@@ -44,9 +44,10 @@ router.route('/registersuccess').post((req,res)=>{
     newUser.save()
         .then(() => res.json('User added!'))
         .catch(err => res.status(400).json('Error: ' +err));
-
-    // res.redirect('http://localhost:3000/info')
+    res.statusCode=200
+    res.redirect('http://localhost:3000/info')
 })
+
 
 
     // upload(req, res

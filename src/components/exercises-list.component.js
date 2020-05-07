@@ -22,7 +22,7 @@ export default class ExercisesList extends Component{
     constructor(props){
         super(props);
         this.deleteExercise =this.deleteExercise.bind(this);
-        this.state={exercises: []};
+        this.state={exercises: [],user: ""};
     }
     componentDidMount(){
         axios.get('http://localhost:5000/exercises/')
@@ -32,6 +32,17 @@ export default class ExercisesList extends Component{
           .catch((error) =>{
               console.log(error);
           }) 
+    }
+    open(){
+        axios.get('http://localhost:5000/users/')
+         .then(response =>{
+             if (response.data.length>0){
+                 this.setState({
+                     users:response.data.map(user=>user.username),
+
+                 })
+             }
+         })
     }
     deleteExercise(id){
         axios.delete('http://localhost:5000/exercises/'+id)
@@ -64,7 +75,8 @@ export default class ExercisesList extends Component{
                     </thead>
                 
                 <tbody>
-                    {this.exerciseList()}
+                    {this.open(),
+                    this.exerciseList()}
 
                 </tbody>
                 </table>
