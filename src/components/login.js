@@ -7,17 +7,18 @@ export default class LoginPage extends Component{
         super(props);
         this.handleSubmit = this.handleSubmit.bind(this)
         this.setEmail = this.setEmail.bind(this)
-        this.setPassword = this.setPassword1.bind(this)
+        this.setPassword = this.setPassword.bind(this)
         this.validateForm = this.validateForm.bind(this)
         this.state={            
             email:"",
-            password1:"",
+            password:"",
+            getpassword:""
             
         }}
 
 
    validateForm() {
-    return this.state.email.length > 0 && this.state.password.length > 0;
+    return this.state.email.length > 0 && this.state.password.length > 0
   }
 
 handleSubmit(event) {
@@ -27,10 +28,44 @@ handleSubmit(event) {
         email:this.state.email,
         password:this.state.password,
     }
-    // axios.post('http://localhost:5000/users/registersuccess',user)
-    //     .then(res =>console.log(res.data));
 
-  }
+    axios.post('http://localhost:5000/users/confirm',{username:this.state.email})
+   
+    .then((response)=>{
+      if (response.data.length>0){
+          this.setState({
+              getpassword:response.data[0].password
+  })
+
+}else{
+  alert("not found")
+}
+if (this.state.password === this.state.getpassword){
+  alert("yesok")
+  window.location = '/info'
+}
+else{
+ alert("nomatch")
+}
+}).catch((e)=>{
+alert(e)
+
+})
+}
+//     axios.get('http://localhost:5000/users/confirm')
+//        .then(response =>{
+//            if (response.data.length>0){
+//                this.setState({
+//                   getpassword:response.data.map(user=>user.password)                  
+               
+//            });
+//        }
+
+//   })
+//   if (this.state.password === this.state.getpassword){
+//     //login 成功跳转页面
+//   }
+// }
   setEmail(e){
     this.setState({
         email: e.target.value
