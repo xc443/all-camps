@@ -2,30 +2,101 @@ import React, { Component } from "react";
 import { Button, FormGroup, FormControl, ControlLabel } from "react-bootstrap";
 import "./login.css";
 import axios from 'axios'
-export default class HomePage extends Component{
+export default class LoginPage extends Component{
     constructor(props){
         super(props);
-        this.handleSubmit = this.handleSubmit.bind(this)
-        this.setEmail = this.setEmail.bind(this)
+        this.handleSubmitlog = this.handleSubmitlog.bind(this)
+        this.setEmaillog = this.setEmaillog.bind(this)
+        this.setPasswordlog = this.setPasswordlog.bind(this)
+        this.validateFormlog = this.validateFormlog.bind(this)
+        this.handleSubmitreg = this.handleSubmitreg.bind(this)
+        this.setEmailreg = this.setEmailreg.bind(this)
         this.setPassword1 = this.setPassword1.bind(this)
         this.setPassword2 = this.setPassword2.bind(this)
-        this.validateForm = this.validateForm.bind(this)
+        this.validateFormregreg = this.validateFormreg.bind(this)
         this.state={            
-            email:"",
+            emaillog:"",
+            passwordlog:"",
+            getpasswordlog:"",
+            emailreg:"",
             password1:"",
             password2:""
+            
         }}
 
 
-   validateForm() {
-    return this.state.email.length > 0 && this.state.password1.length > 0 &&this.state.password2.length > 0 &&this.state.password1===this.state.password2;
+   validateFormlog() {
+    return this.state.emaillog.length > 0 && this.state.passwordlog.length > 0
   }
 
-handleSubmit(event) {
+handleSubmitlog(event) {
+      
+    event.preventDefault();
+
+    axios.post('http://localhost:5000/users/confirm',{username:this.state.emaillog})
+   
+    .then((response)=>{
+      if (response.data.length>0){
+          this.setState({
+              getpasswordlog:response.data[0].password
+  })
+
+}else{
+  alert("not found")
+}
+if (this.state.passwordlog === this.state.getpasswordlog){
+  alert("yesok")
+  window.location = '/info'
+}
+else{
+ alert("nomatch")
+}
+}).catch((e)=>{
+alert(e)
+
+})
+}
+//     axios.get('http://localhost:5000/users/confirm')
+//        .then(response =>{
+//            if (response.data.length>0){
+//                this.setState({
+//                   getpassword:response.data.map(user=>user.password)                  
+               
+//            });
+//        }
+
+//   })
+//   if (this.state.password === this.state.getpassword){
+//     //login 成功跳转页面
+//   }
+// }
+  setEmaillog(e){
+    this.setState({
+        emaillog: e.target.value
+    });
+}
+setPasswordlog(e){
+    this.setState({
+        passwordlog: e.target.value
+    });
+}
+
+
+
+
+
+
+
+
+   validateFormreg() {
+    return this.state.emailreg.length > 0 && this.state.password1.length > 0 &&this.state.password2.length > 0 &&this.state.password1===this.state.password2;
+  }
+
+handleSubmitreg(event) {
       
     event.preventDefault();
     const user ={
-        email:this.state.email,
+        email:this.state.emailreg,
         password1:this.state.password1,
         password2:this.state.password2
     }
@@ -33,9 +104,9 @@ handleSubmit(event) {
         .then(res =>console.log(res.data));
 
   }
-  setEmail(e){
+  setEmailreg(e){
     this.setState({
-        email: e.target.value
+        emailreg: e.target.value
     });
 }
 setPassword1(e){
@@ -50,15 +121,17 @@ setPassword2(e){
 }
 render(){
     return(
-    <div className="Login">
-      <form onSubmit={this.handleSubmit}>
+    <div >
+        <div className="Login">
+      <form onSubmit={this.handleSubmitreg}>
+          
         <FormGroup controlId="email" bsSize="large">
-          <ControlLabel>username</ControlLabel>
+          <ControlLabel>Username</ControlLabel>
           <FormControl
             autoFocus
             // type="email"
-            value={this.state.email}
-            onChange={this.setEmail}
+            value={this.state.emailreg}
+            onChange={this.setEmailreg}
           />
         </FormGroup>
         <FormGroup controlId="password" bsSize="large">
@@ -77,10 +150,37 @@ render(){
             type="password"
           />
         </FormGroup>
-        <Button block bsSize="large" disabled={!this.validateForm()} type="submit">
+        <Button block bsSize="large" disabled={!this.validateFormreg()} type="submit">
           Register
         </Button>
       </form>
+      </div>
+      <div className="Register">
+        
+      <form onSubmit={this.handleSubmitlog}>
+        <FormGroup controlId="email" bsSize="large">
+          <ControlLabel>Username</ControlLabel>
+          <FormControl
+            autoFocus
+            // type="email"
+            value={this.state.emaillog}
+            onChange={this.setEmaillog}
+          />
+        </FormGroup>
+        <FormGroup controlId="password" bsSize="large">
+          <ControlLabel>Password</ControlLabel>
+          <FormControl
+            value={this.state.passwordlog}
+            onChange={this.setPasswordlog}
+            type="password"
+          />
+        </FormGroup>
+
+        <Button block bsSize="large" disabled={!this.validateFormlog()} type="submit">
+          Login
+        </Button>
+      </form>
+      </div>
     </div>
   )
 }}
