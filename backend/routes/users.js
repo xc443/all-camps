@@ -40,7 +40,16 @@ router.route('/registersuccess').post((req,res)=>{
     const newUser = new User({
             username,
             password,
+
 })
+                newUser.save()
+        .then(() => res.json('User added!'))
+        .catch(err => res.status(400).json('Error: ' +err));})
+    // res.statusCode=200
+    // res.redirect('http://localhost:3000/info')})
+
+
+
 router.route('/confirm').get((req,res)=>{
     // res.redirect('http://localhost:3000/info')
     User.find({username:req.body.username})
@@ -48,12 +57,8 @@ router.route('/confirm').get((req,res)=>{
         .catch(err => res.status(400).json('Error: ' + err));
 })
 
-//     newUser.save()
-//         .then(() => res.json('User added!'))
-//         .catch(err => res.status(400).json('Error: ' +err));
-    // res.statusCode=200
-    // res.redirect('http://localhost:3000/info')
-})
+
+
 router.route('/confirm').post((req,res)=>{
     var mem= ""
     User.find({username:req.body.username})

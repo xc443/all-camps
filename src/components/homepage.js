@@ -102,6 +102,8 @@ handleSubmitreg(event) {
     }
     axios.post('http://localhost:5000/users/registersuccess',user)
         .then(res =>console.log(res.data));
+        alert('User added!')
+        window.location = '/'
 
   }
   setEmailreg(e){
