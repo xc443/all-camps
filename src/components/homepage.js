@@ -47,7 +47,13 @@ handleSubmitlog(event) {
 }
 if (this.state.passwordlog === this.state.getpasswordlog){
   alert("yesok")
-  window.location = '/info'
+  this.props.history.push("/info", {
+    
+    username: this.state.emaillog //需要传递的参数
+    
+    });
+    
+//   window.location = '/info'
 }
 else{
  alert("nomatch")
@@ -126,7 +132,6 @@ render(){
     return(
         
     <div >
-  
         <div className="Login">
       <form onSubmit={this.handleSubmitreg}>
           
@@ -185,7 +190,9 @@ render(){
           Login
         </Button>
       </form>
+     
       </div>
+      {/* <ExercisesList username = {this.state.emaillog}/> */}
     </div>
   )
 }}

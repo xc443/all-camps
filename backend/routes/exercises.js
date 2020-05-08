@@ -17,6 +17,16 @@ router.route('/').post((req,res)=>{
         console.log(e)
     })
 })
+router.route('/getinfo').post((req,res)=>{
+    var mem= ""
+    Exercise.find({username:req.body.username})
+    .then((exercises )=>{
+        
+         res.status(200).json(exercises)
+    }).catch((e)=>{
+        console.log(e)
+    })
+})
 
 router.route('/username').get((req, res) => {
     //     Exercise.find()

@@ -1,6 +1,7 @@
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 const exerciseSchema = new Schema({
+    username:{type:String},
     firstname: {type:String,required:true},
     lastname: {type: String, required: true},
     nickname:{ type: String, required: true},

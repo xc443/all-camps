@@ -1,7 +1,7 @@
 import React,{Component} from 'react';
 import {Link} from 'react-router-dom';
 import axios from 'axios';
-import HomePage from "./homepage.js"
+// import HomePage from "./homepage.js"
 
 const Exercise = props =>(
     <tr>
@@ -19,35 +19,39 @@ const Exercise = props =>(
     </td> */}
     </tr>
 )
+
 export default class ExercisesList extends Component{
     constructor(props){
         super(props);
-        
         this.deleteExercise =this.deleteExercise.bind(this);
-        this.state={exercises: [],username: ""};
-    }
+        if (this.props.location.state){
+        const messages = this.props.location.state.username
+        this.state={exercises: [],username: messages};      
+    }else{
+    this.state={exercises: [],username:" "}}}
     componentDidMount(){
             
             // console.log(this.username)
-        axios.get('http://localhost:5000/exercises/')
-         .then(response=>{
-             this.setState({ exercises:response.data})
+        axios.post('http://localhost:5000/exercises/getinfo',{username:this.state.username})
+         .then(response=>{if (response.data.length>0){
+             this.setState({ exercises:response.data})}
+            //  else{alert("no")}
           })
           .catch((error) =>{
               console.log(error);
           }) 
     }
-    open(){
-        axios.get('http://localhost:5000/users/')
-         .then(response =>{
-             if (response.data.length>0){
-                 this.setState({
-                     users:response.data.map(user=>user.username),
+    // open(){
+    //     axios.get('http://localhost:5000/users/')
+    //      .then(response =>{
+    //          if (response.data.length>0){
+    //              this.setState({
+    //                  users:response.data.map(user=>user.username),
 
-                 })
-             }
-         })
-    }
+    //              })
+    //          }
+    //      })
+    // }
     deleteExercise(id){
         axios.delete('http://localhost:5000/exercises/'+id)
          .then(res=>console.log(res.data));
@@ -58,7 +62,8 @@ export default class ExercisesList extends Component{
     }
     exerciseList(){
         // console.log(this.state.exercise)
-        // console.log(this.props.message)
+        // console.log( this.props.location.state)
+        // console.log(this.props.username)
         return this.state.exercises.map(currentexercise =>{
             return <Exercise exercise={currentexercise} deleteExercise={this.deleteExercise} key={currentexercise._id} />;
         })
@@ -81,7 +86,7 @@ export default class ExercisesList extends Component{
                     </thead>
                 
                 <tbody>
-                    {this.open(),
+                    {
                     this.exerciseList()}
 
                 </tbody>

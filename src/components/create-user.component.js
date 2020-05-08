@@ -334,9 +334,9 @@ export default class CreateUsers extends Component{
                 
                 <form onSubmit={this.onSubmitBaseTable}>
                     <div className="form-group" >
-                    <table>
-                        <tread><th>
-                        <label>Firstname:  </label>
+                   
+                        <tr><td>
+                        <label>Child's firstname:  </label>
                         <input type="text"
                             required
                             // className="form-control"
@@ -344,9 +344,9 @@ export default class CreateUsers extends Component{
                             onChange={this.onChangeFirstname}
                             size="20"
                             />
-                            <br></br>
-                            </th><th>
-                        <label>Lastname:  </label>
+                            
+                            </td><td>
+                        <label>Child's lastname:  </label>
                         <input type="text"
                             required
                             // className="form-control"
@@ -354,9 +354,9 @@ export default class CreateUsers extends Component{
                             onChange={this.onChangeLastname}
                             size="20"
                             />
-                        <br></br></th>
-                        <th>
-                        <label>Nickname:  </label>
+                        </td>
+                        <td>
+                        <label>Child's nickname:  </label>
                         <input type="text"
                             required
                             // className="form-control"
@@ -364,9 +364,9 @@ export default class CreateUsers extends Component{
                             onChange={this.onChangeNickname}
                             size="20"
                             />
-                            <br></br></th>
-                            <th>
-                        <label>Gender:  </label>
+                            </td>
+                            <td>
+                        <label>Child's gender:  </label>
                         <input type="text"
                             required
                             // className="form-control"
@@ -374,18 +374,20 @@ export default class CreateUsers extends Component{
                             onChange={this.onChangeGender}
                             size="20"
                             />
-                            <br></br></th>
-                            <th>
-                        <label>Home Address:  </label>
-                        <input type="text"
+                            </td></tr>
+                           
+                        <label>Home Address:  </label> <br></br>
+                        <input type="text" 
                             required
                             // className="form-control"
                             value={this.state.homeaddress}
                             onChange={this.onChangeHomeaddress}
-                            size="20"
+                            size="50"
                             />
-                            <br></br></th>
-                            <th>
+                            <br></br>
+                           
+                            <tr>
+                            <td>
                         <label>Contact Number:  </label>
                         <input type="text"
                             required
@@ -394,9 +396,9 @@ export default class CreateUsers extends Component{
                             onChange={this.onChangeContactnumber}
                             size="20"
                             />
-                            <br></br></th>
-                            <th>
-                        <label>Birth Date:  </label>
+                            <br></br></td>
+                            <td>
+                        <label>Birth Date:  </label><br></br>
                         <DatePicker
                         placeholderText="Click to select a date"
                             selected={this.state.birthdate}
@@ -406,9 +408,9 @@ export default class CreateUsers extends Component{
                             showYearDropdown
                             showMonthDropdown
                         />
-                        <br></br></th>
-                            <th>
-                        <label>Age:  </label>
+                        <br></br></td>
+                            <td>
+                        <label>Age:  </label><br></br>
                         <input type="text"
                             required
                             // className="form-control"
@@ -416,8 +418,8 @@ export default class CreateUsers extends Component{
                             onChange={this.onChangeAge}
                             size="20"
                             />
-                        <br></br></th>
-                            <th>
+                        <br></br></td>
+                            <td>
                         <label>Home Phone:  </label>
                         <input type="text"
                             required
@@ -426,8 +428,8 @@ export default class CreateUsers extends Component{
                             onChange={this.onChangeHomephone}
                             size="20"
                             />
-                        <br></br></th>
-                            <th>
+                        <br></br></td>
+                            <td>
                         <label>Work Phone:  </label>
                         <input type="text"
                             required
@@ -436,8 +438,9 @@ export default class CreateUsers extends Component{
                             onChange={this.onChangeWorkphone}
                             size="20"
                             />
-                        <br></br></th>
-                            <th>
+                        <br></br></td>
+                        </tr><tr>
+                            <td>
                         <label>Parent 1's Name:  </label>
                         <input type="text"
                             required
@@ -446,8 +449,8 @@ export default class CreateUsers extends Component{
                             onChange={this.onChangeParent1name}
                             size="20"
                             />
-                        <br></br></th>
-                            <th>
+                        <br></br></td>
+                            <td>
                         <label>Parent 1's Relationship to Applicant:  </label>
                         <input type="text"
                             required
@@ -456,8 +459,8 @@ export default class CreateUsers extends Component{
                             onChange={this.onChangeParent1relationship}
                             size="20"
                             />
-                        <br></br></th>
-                            <th>
+                        <br></br></td>
+                            <td>
                         <label>Parent 1's Phone:  </label>
                         <input type="text"
                             required
@@ -466,8 +469,8 @@ export default class CreateUsers extends Component{
                             onChange={this.onChangeParent1phone}
                             size="20"
                             />
-                        <br></br></th>
-                            <th>
+                        <br></br></td>
+                            <td>
                         <label>Parent 1's Job:  </label>
                         <input type="text"
                             required
@@ -477,8 +480,9 @@ export default class CreateUsers extends Component{
                             size="20"
                             />
 
-                        <br></br></th>
-                            <th>
+                        <br></br></td>
+                        </tr><tr>
+                            <td>
                         <label>Parent 2's Name:  </label>
                         <input type="text"
                             required
@@ -487,8 +491,8 @@ export default class CreateUsers extends Component{
                             onChange={this.onChangeParent2name}
                             size="20"
                             />
-                        <br></br></th>
-                            <th>
+                        <br></br></td>
+                            <td>
                         <label>Parent 2's Relationship to Applicant:  </label>
                         <input type="text"
                             required
@@ -497,8 +501,8 @@ export default class CreateUsers extends Component{
                             onChange={this.onChangeParent2relationship}
                             size="20"
                             />
-                        <br></br></th>
-                            <th>
+                        <br></br></td>
+                            <td>
                         <label>Parent 2's Phone:  </label>
                         <input type="text"
                             required
@@ -507,8 +511,8 @@ export default class CreateUsers extends Component{
                             onChange={this.onChangeParent2phone}
                             size="20"
                             />
-                        <br></br></th>
-                            <th>
+                        <br></br></td>
+                            <td>
                         <label>Parent 2's Job:  </label>
                         <input type="text"
                             required
@@ -517,8 +521,9 @@ export default class CreateUsers extends Component{
                             onChange={this.onChangeParent2work}
                             size="20"
                             />
-                        <br></br></th>
-                            <th>
+                        <br></br></td>
+                        </tr><tr>
+                            <td>
                         <label>Email:  </label>
                         <input type="text"
                             required
@@ -527,8 +532,8 @@ export default class CreateUsers extends Component{
                             onChange={this.onChangeEmail}
                             size="20"
                             />
-                        <br></br></th>
-                            <th>
+                        <br></br></td>
+                            <td>
                         <label>Family Doctor's Name:  </label>
                         <input type="text"
                             required
@@ -537,8 +542,8 @@ export default class CreateUsers extends Component{
                             onChange={this.onChangeDoctorname}
                             size="20"
                             />
-                        <br></br></th>
-                            <th>
+                        <br></br></td>
+                            <td>
                         <label>Family Doctor's Phone:  </label>
                         <input type="text"
                             required
@@ -547,8 +552,8 @@ export default class CreateUsers extends Component{
                             onChange={this.onChangeDoctorphone}
                             size="20"
                             />
-                        <br></br></th>
-                            <th>
+                        <br></br></td>
+                            <td>
                         <label>Any Allergies:  </label>
                         <input type="text"
                             required
@@ -556,9 +561,9 @@ export default class CreateUsers extends Component{
                             value={this.state.allergies}
                             onChange={this.onChangeAllergies}
                             size="20"
-                            /></th>
+                            /></td>
                             
-                            </tread></table>
+                            </tr>
                     </div>
                     <input type="submit" value="Submit" className="btn btn-primary"></input>
                     <div>{ this.state.mode ?  'Add successfully':'' }</div>

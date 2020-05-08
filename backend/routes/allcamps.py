@@ -53,7 +53,7 @@ class allcamps:
 
     def __init__(self,firstname,page):
         self.firstname = firstname
-        self.page = page 
+        self.page = page - 1 
 
     def start_server(self):
         client = MongoClient("mongodb+srv://Xinni:123@test-j20kt.mongodb.net/test?retryWrites=true&w=majority")
@@ -134,6 +134,34 @@ class allcamps:
         a["b'Text68'"] = "doctor name"
         a["b'Text69'"] = "doctor phone number"
         a["b'Parent\x90s\tName'"] = "paraent1name"
+        a["b'Parent'"] = "parent1name"
+        a["b'Guardian'"] = "parent1name"
+        a["b'Guardian Email'"] = "email"
+        a["b'Participants Full Name Print'"] = "childname"
+        a["b'Minor Child Date of birth'"] = "birthdate"
+        a["b'parent1phone1'"] = "parent1phone"
+        a["b'parent1phone2'"] = "parent1phone"
+        a["b'parent1phone2'"] = "parent1phone"
+        a["b'parent2phone1'"] = "parent2phone"
+        a["b'parent2phone2'"] = "parent2phone"
+        a["b'parent2phone3'"] = "parent2phone"
+        a["b'parent1relationship1'"] = "parent1relationship"
+        a["b'parent2relationship1'"] = "parent2relationship"
+        a["b'parent1relationship2'"] = "parent1relationship"
+        a["b'parent2relationship2'"] = "parent2relationship"
+        a["b'email2'"] = "email"
+        a["b'email1'"] = "email"
+        a["b'homeaddress1'"] = "homeaddress"
+        a["b'homeaddress2'"] = "homeaddress"
+        a["b'Childs Name'"] = "childname"
+        a["b'Childs Name_2'"] = "childname"
+        a["b'parent1name1'"] = "parent1name"
+        a["b'parent1name2'"] = "parent1name"
+        a["b'parent1name3'"] = "parent1name"
+        a["b'parent2name1'"] = "parent2name"
+        a["b'parent2name2'"] = "parent2name"
+        a["b'parent2name3'"] = "parent2name"
+
         return a
     
     def pdffill(self):
@@ -182,14 +210,15 @@ class allcamps:
                 # print(temp)
                 # print(1)
                 if (str(name) in mapping.keys() and p in mapping[str(name)]) or p in temp:
-                    print(p)
-                    print(str(name) in mapping.keys() and p in mapping[str(name)])
-                    print( p in temp)
+                    # print(p)
+                    # print(str(name) in mapping.keys() and p in mapping[str(name)])
+                    # print( p in temp)
                     
                     if p == "birthdate":
                         writer.updatePageFormFieldValues(first_page, fields={str(name)[2:len(str(name))-1]:str(x[p])[:10]})
                     else:
-                        # print(str(name)[2:len(str(name))-1])
+                        print(str(name)[2:len(str(name))-1])
+                        print(str(x[p]))
                         writer.updatePageFormFieldValues(first_page, fields={str(name)[2:len(str(name))-1]:str(x[p])})
         #    print ('{0}: {1}'.format(name, value))
         # writer.addPage(first_page)
