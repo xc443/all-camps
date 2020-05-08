@@ -17,6 +17,23 @@ router.route('/').post((req,res)=>{
         console.log(e)
     })
 })
+
+router.route('/username').get((req, res) => {
+    //     Exercise.find()
+    Exercise.find({username:req.body.username})
+            .then(exercises => res.json(exercises))
+            .catch(err => res.status(400).json('Error: ' + err));
+    });
+    router.route('/username').post((req,res)=>{
+        var mem= ""
+        Exercise.find({username:req.body.username})
+        .then((exercises )=>{
+            
+             res.status(200).json(exercises)
+        }).catch((e)=>{
+            console.log(e)
+        })
+    })
 router.route('/add').post((req,res) => {
     const username = req.body.username
     const firstname = req.body.firstname;

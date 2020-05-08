@@ -1,6 +1,7 @@
 import React,{Component} from 'react';
 import {Link} from 'react-router-dom';
 import axios from 'axios';
+import HomePage from "./homepage.js"
 
 const Exercise = props =>(
     <tr>
@@ -21,10 +22,13 @@ const Exercise = props =>(
 export default class ExercisesList extends Component{
     constructor(props){
         super(props);
+        
         this.deleteExercise =this.deleteExercise.bind(this);
-        this.state={exercises: [],user: ""};
+        this.state={exercises: [],username: ""};
     }
     componentDidMount(){
+            
+            // console.log(this.username)
         axios.get('http://localhost:5000/exercises/')
          .then(response=>{
              this.setState({ exercises:response.data})
@@ -53,6 +57,8 @@ export default class ExercisesList extends Component{
          })
     }
     exerciseList(){
+        // console.log(this.state.exercise)
+        // console.log(this.props.message)
         return this.state.exercises.map(currentexercise =>{
             return <Exercise exercise={currentexercise} deleteExercise={this.deleteExercise} key={currentexercise._id} />;
         })

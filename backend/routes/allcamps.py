@@ -101,7 +101,7 @@ class allcamps:
         a["b'Text39'"] = "parent1's home phone"
         a["b'Text40'"] = "parent1work"
         a["b'Text41'"] = "parent1phone"
-        a["b'Text42'"] = "parent1's Company"
+        a["b'Text42'"] = "parent1work"
         a["b'Text43'"] = "parent1's Work Phone"
         a["b'Text44'"] = "parent1's email Address"
         a["b'Text45'"] = "parent1's homeaddress"
@@ -111,7 +111,7 @@ class allcamps:
         a["b'Text49'"] = "parent2's home phone"
         a["b'Text50'"] = "parent2work"
         a["b'Text51'"] = "parent2phone"
-        a["b'Text52'"] = "parent2's Company"
+        a["b'Text52'"] = "parent2work"
         a["b'Text53'"] = "parent2's Work Phone"
         a["b'Text54'"] = "parent2's email Address"
         a["b'Text55'"] = "parent2's homeaddress"
@@ -133,6 +133,7 @@ class allcamps:
         a["b'Text67'"] = "contact 2 work Phone"
         a["b'Text68'"] = "doctor name"
         a["b'Text69'"] = "doctor phone number"
+        a["b'Parent\x90s\tName'"] = "paraent1name"
         return a
     
     def pdffill(self):
@@ -175,17 +176,24 @@ class allcamps:
                 label = (re.split(b'\t|\x90s',name))
                 q = ""
                 for j in label:
-                    temp.append(j.decode('utf-8').lower())
+                    # temp.append(j.decode('utf-8').lower())
                     q = q+(j.decode('utf-8').lower())
                 temp.append(q)
-                if str(name) in mapping.keys() and p in mapping[str(name)] or p in temp:
-        
+                # print(temp)
+                # print(1)
+                if (str(name) in mapping.keys() and p in mapping[str(name)]) or p in temp:
+                    print(p)
+                    print(str(name) in mapping.keys() and p in mapping[str(name)])
+                    print( p in temp)
+                    
                     if p == "birthdate":
                         writer.updatePageFormFieldValues(first_page, fields={str(name)[2:len(str(name))-1]:str(x[p])[:10]})
                     else:
+                        # print(str(name)[2:len(str(name))-1])
                         writer.updatePageFormFieldValues(first_page, fields={str(name)[2:len(str(name))-1]:str(x[p])})
         #    print ('{0}: {1}'.format(name, value))
         # writer.addPage(first_page)
+        writer.updatePageFormFieldValues(first_page, fields={'parent1name':"123"})
         return first_page
 
 if __name__ == "__main__":  
