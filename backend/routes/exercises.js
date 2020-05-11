@@ -7,7 +7,7 @@ Exercise.find({username:req.body.username})
         .then(exercises => res.json(exercises))
         .catch(err => res.status(400).json('Error: ' + err));
 });
-router.route('/').post((req,res)=>{
+router.route('/confirm').post((req,res)=>{
     var mem= ""
     Exercise.find({lastname:req.body.lastname,firstname:req.body.firstname})
     .then((exercises )=>{
@@ -17,6 +17,12 @@ router.route('/').post((req,res)=>{
         console.log(e)
     })
 })
+router.route('/confirm').get((req, res) => {
+    //     Exercise.find()
+    Exercise.find()
+            .then(exercises => res.json(exercises))
+            .catch(err => res.status(400).json('Error: ' + err));
+    });
 router.route('/getinfo').post((req,res)=>{
     var mem= ""
     Exercise.find({username:req.body.username})

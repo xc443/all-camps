@@ -84,7 +84,7 @@ export default class CreateExercises extends Component{
     //     })
     // }
     onclickok(){
-        axios.post('http://localhost:5000/exercises/',{firstname:this.state.firstname,lastname:this.state.lastname})
+        axios.post('http://localhost:5000/exercises/confirm',{firstname:this.state.firstname,lastname:this.state.lastname})
         .then((response)=>{
             if (response.data.length>0){
                 this.setState({
@@ -112,7 +112,7 @@ export default class CreateExercises extends Component{
 
 
     componentDidMount(){
-        axios.get('http://localhost:5000/exercises/')
+        axios.get('http://localhost:5000/exercises/confirm')
          .then(response =>{
              if (response.data.length>0){
                  this.setState({
