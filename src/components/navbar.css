@@ -1,0 +1,14 @@
+input.custom {
+    color: rgba(255,255,255,.5);
+    font: 16px "Helvetica", "Arial", "sans-serif";
+    border: 0
+  }
+
+input:disabled{
+    background-color: #343A40
+  }
+
+input::placeholder{
+    color: rgba(255,255,255,.5);
+    font: 16px "Helvetica", "Arial", "sans-serif";
+  }

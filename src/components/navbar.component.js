@@ -1,6 +1,8 @@
 import React,{Component} from 'react';
 import {Link} from 'react-router-dom';
+import "./navbar.css"
 
+var username = localStorage.getItem('username');
 export default class Navbar extends Component{
     constructor(props) {
         super(props);
@@ -35,7 +37,8 @@ export default class Navbar extends Component{
                 
                 </div>
                 <div>
-                    <button type="submit" className="btn btn-primary" onClick={this.onSubmit}>Logout</button>
+                    <input class="custom" type="text" disabled placeholder="Please Log In" value={username}></input>
+                    <button type="submit" className="btn btn-primary" disabled={localStorage.getItem('username') === null} onClick={this.onSubmit}>Logout</button>
                 </div>
             </nav>
         );
