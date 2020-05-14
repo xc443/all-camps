@@ -3,14 +3,13 @@ import axios from 'axios'
 import DatePicker from 'react-datepicker';
 import "react-datepicker/dist/react-datepicker.css";
 
-var ff = null;
 export default class CreateUsers extends Component{
     constructor(props){
         super(props);
         this.onChangeUsername=this.onChangeUsername.bind(this);
         this.onSubmit=this.onSubmit.bind(this);
-        this.onChangeHandler=this.onChangeHandler.bind(this);
-        this.onClickHandler=this.onClickHandler.bind(this);
+        // this.onChangeHandler=this.onChangeHandler.bind(this);
+        // this.onClickHandler=this.onClickHandler.bind(this);
         this.onSubmitBaseTable=this.onSubmitBaseTable.bind(this);
         
         this.onChangeChildname = this.onChangeChildname.bind(this); 
@@ -65,31 +64,31 @@ export default class CreateUsers extends Component{
             allergies:[]      
         }
     }
-    onChangeHandler(e){
+    // onChangeHandler(e){
 
-        console.log(e.target.files[0])
-        ff=(e.target.files[0])
-        this.setState({
-            // selectedFile: event.target.files[0]
-            selectedFile:1,
-            username:"kjahd"
-        })
-        console.log(this.state.selectedFile)
-        console.log(this.state.username)
-    }
-    onClickHandler (e) {
-        var data = new FormData() 
-        // data.append('file', this.state.selectedFile)
-        data.append('file', ff)
-        console.log(data)
-        axios.post("http://localhost:5000/users/upload", data, { // receive two parameter endpoint url ,form data 
-      })
-      .then(res => { // then print response status
-        console.log(res.statusText)
-      }).catch((e)=>{
-          alert(e)
-      })
-    }
+    //     console.log(e.target.files[0])
+    //     ff=(e.target.files[0])
+    //     this.setState({
+    //         // selectedFile: event.target.files[0]
+    //         selectedFile:1,
+    //         username:"kjahd"
+    //     })
+    //     console.log(this.state.selectedFile)
+    //     console.log(this.state.username)
+    // }
+    // onClickHandler (e) {
+    //     var data = new FormData() 
+    //     // data.append('file', this.state.selectedFile)
+    //     data.append('file', ff)
+    //     console.log(data)
+    //     axios.post("http://localhost:5000/users/upload", data, { // receive two parameter endpoint url ,form data 
+    //   })
+    //   .then(res => { // then print response status
+    //     console.log(res.statusText)
+    //   }).catch((e)=>{
+    //       alert(e)
+    //   })
+    // }
     
     onChangeUsername(e){
         this.setState({
@@ -172,7 +171,6 @@ export default class CreateUsers extends Component{
     }
 
     onChangeChildname(e){
-        var str = ""
         this.setState({
             childname: '',
             // childname: this.state.lastname.toString() + this.state.firstname.toString()
