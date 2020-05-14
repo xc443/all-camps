@@ -189,7 +189,7 @@ render(){
           />
         </FormGroup>
 
-        <Button block bsSize="large" disabled={!this.validateFormlog()} type="submit">
+        <Button block bsSize="large" disabled={!this.validateFormlog() ||!(localStorage.getItem('username') === null)} type="submit">
           Login
         </Button>
       </form>
