@@ -37,7 +37,7 @@ export default class Navbar extends Component{
                 
                 </div>
                 <div>
-                    <input class="custom" type="text" disabled placeholder="Please Log In" value={username}></input>
+                    <input class="custom" type="text" disabled placeholder="Please Log In" value={localStorage.getItem('username')}></input>
                     <button type="submit" className="btn btn-primary" disabled={localStorage.getItem('username') === null} onClick={this.onSubmit}>Logout</button>
                 </div>
             </nav>
