@@ -47,13 +47,14 @@ handleSubmitlog(event) {
 }
 if (this.state.passwordlog === this.state.getpasswordlog){
   alert("yesok")
+  window.location.reload(true);
   this.props.history.push("/info", {
     
     username: this.state.emaillog //需要传递的参数
     
     });
     
-//   window.location = '/info'
+  window.location = '/info'
 }
 else{
  alert("nomatch")
@@ -62,6 +63,7 @@ else{
 alert(e)
 
 })
+
 }
 //     axios.get('http://localhost:5000/users/confirm')
 //        .then(response =>{

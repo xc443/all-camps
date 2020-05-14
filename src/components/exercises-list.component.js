@@ -19,7 +19,18 @@ const Exercise = props =>(
     </td> */}
     </tr>
 )
-
+// window.onload = function() {
+//     if(!window.location.hash) {
+//         window.location = window.location + '#loaded';
+//         window.location.reload();
+//     }
+// }
+// window.onload = function () {
+//     if (! localStorage.justOnce) {
+//         localStorage.setItem("justOnce", "true");
+//         window.location.reload();
+//     }
+// }
 export default class ExercisesList extends Component{
     constructor(props){
         super(props);
@@ -95,3 +106,4 @@ export default class ExercisesList extends Component{
         )
     }
 }
+

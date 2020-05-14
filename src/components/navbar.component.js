@@ -6,12 +6,26 @@ var username = localStorage.getItem('username');
 export default class Navbar extends Component{
     constructor(props) {
         super(props);
+        this.state={username:localStorage.getItem('username')};
         this.onSubmit=this.onSubmit.bind(this);
+        this.validationLogout=this.validationLogout.bind(this);
     }
     onSubmit() {
+        console.log(localStorage.getItem('username'));
         alert("Logged Out!");
+        this.setState({
+            username: localStorage.getItem('username')
+        });
+        
         localStorage.removeItem('username');
-        window.location = '/'
+        console.log(localStorage.getItem('username'));
+        window.location.reload(true);
+        window.location = '/';
+        
+       
+    }
+    validationLogout() {
+        return this.state.username === null;
     }
     render(){
         return (
@@ -37,8 +51,8 @@ export default class Navbar extends Component{
                 
                 </div>
                 <div>
-                    <input class="custom" type="text" disabled placeholder="Please Log In" value={localStorage.getItem('username')}></input>
-                    <button type="submit" className="btn btn-primary" disabled={localStorage.getItem('username') === null} onClick={this.onSubmit}>Logout</button>
+                    <input class="custom" type="text" disabled placeholder="Please Log In" value={this.state.username}></input>
+                    <button type="submit" className="btn btn-primary" disabled={this.validationLogout()} onClick={this.onSubmit}>Logout</button>
                 </div>
             </nav>
         );
