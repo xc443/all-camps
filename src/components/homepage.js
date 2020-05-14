@@ -2,7 +2,6 @@ import React, { Component } from "react";
 import { Button, FormGroup, FormControl, ControlLabel } from "react-bootstrap";
 import "./login.css";
 import axios from 'axios'
-import ExercisesList from "./exercises-list.component.js"
 export default class LoginPage extends Component{
     constructor(props){
         super(props);
@@ -192,7 +191,7 @@ render(){
       </form>
      
       </div>
-      {/* <ExercisesList username = {this.state.emaillog}/> */}
+    
     </div>
   )
 }}

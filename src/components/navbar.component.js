@@ -2,6 +2,13 @@ import React,{Component} from 'react';
 import {Link} from 'react-router-dom';
 
 export default class Navbar extends Component{
+    constructor(props) {
+        super(props);
+        this.onSubmit=this.onSubmit.bind(this);
+    }
+    onSubmit() {
+        alert("Logged Out!");
+    }
     render(){
         return (
             <nav className="navbar navbar-dark bg-dark navbar-expand-lg">
@@ -24,6 +31,9 @@ export default class Navbar extends Component{
                 </ul>
 
                 
+                </div>
+                <div>
+                    <button type="submit" className="btn btn-primary" onClick={this.onSubmit}>Logout</button>
                 </div>
             </nav>
         );
