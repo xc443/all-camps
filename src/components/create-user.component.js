@@ -113,13 +113,11 @@ export default class CreateUsers extends Component{
     }
 
     onSubmitBaseTable(e){
-
-        // console.log(this.state.firstname.toString())
-        // console.log(this.state.lastname.toString())
-        // console.log(this.state.firstname.toString() + this.state.lastname.toString())
-        e.preventDefault();
+       e.preventDefault();
+        var un = localStorage.getItem('username');
+        console.log(un);
         const exercise ={
-
+            username: un,
             firstname:this.state.firstname,
             lastname:this.state.lastname,
             childname:this.state.childname,

@@ -8,6 +8,8 @@ export default class Navbar extends Component{
     }
     onSubmit() {
         alert("Logged Out!");
+        localStorage.removeItem('username');
+        window.location = '/'
     }
     render(){
         return (
