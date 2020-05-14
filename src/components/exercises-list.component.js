@@ -93,6 +93,7 @@ export default class ExercisesList extends Component{
                             <th>Gender</th>
                             <th>Home Address</th>
                             <th>Contact Number</th>
+                            <th></th>
                         </tr>
                     </thead>
                 

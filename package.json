@@ -15,6 +15,7 @@
     "child_process": "^1.0.2",
     "jspdf": "^1.4.1",
     "jspdf-autotable": "^3.4.2",
+    "md5": "^2.2.1",
     "ng-fullcalendar": "^2.0.3",
     "react": "^16.13.1",
     "react-bootstrap": "^0.32.4",

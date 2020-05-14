@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import { Button, FormGroup, FormControl, ControlLabel } from "react-bootstrap";
 import "./login.css";
 import axios from 'axios'
+import md5 from "md5"
 export default class LoginPage extends Component{
     constructor(props){
         super(props);
@@ -45,7 +46,7 @@ handleSubmitlog(event) {
 }else{
   alert("not found")
 }
-if (this.state.passwordlog === this.state.getpasswordlog){
+if (md5(this.state.passwordlog) === this.state.getpasswordlog){
   alert("yesok")
   window.location.reload(true);
   this.props.history.push("/info", {

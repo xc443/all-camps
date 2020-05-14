@@ -188,7 +188,9 @@ router.route('/py/pdfget').post((req,res)=>{
       
       py.on('exit', (code) => {
         console.log(`Child exited with code ${code}`);
+        res.json({code})
       });
+      
 })
 
 

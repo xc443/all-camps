@@ -400,7 +400,7 @@ export default class CreateUsers extends Component{
                         <label>Birth Date:  </label><br></br>
                         <DatePicker
                         placeholderText="Click to select a date"
-                            // selected={this.state.birthdate}
+                            selected={this.state.birthdate}
                             onChange={this.onChangeBirthdate}
                             dateFormat="MM/dd/yyyy"
                             isClearable

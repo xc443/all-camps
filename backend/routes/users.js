@@ -1,3 +1,5 @@
+let md5 = require("md5");
+
 var router = require('express').Router();
 var multer = require('multer');
 var express = require('express');
@@ -36,7 +38,7 @@ router.post('/up',upload.single('upl'),(req,res)=>{
 router.route('/registersuccess').post((req,res)=>{
     // res.redirect('http://localhost:3000/info')
     const username= req.body.email;
-    const password = req.body.password1;
+    const password = md5(req.body.password1);
     const newUser = new User({
             username,
             password,

@@ -30,14 +30,20 @@ export default class CreateExercises extends Component{
             genders:[],
             homeaddresss:[],
             contactnumbers:[],
-            page:[]
+            page:[],
+            onclickconfirm:0
             
         }
     }
     test(){
         axios.post('http://localhost:5000/exercises/py/pdfget',{firstname:this.state.firstname,page:this.state.page})
         .then((response)=>{
-            alert(response.data)
+            console.log(response.data)
+            if (response.data.code === 0){
+                window.location = ('/create')
+            alert('File Created!')}else{
+                alert('No blanks on this page')
+            }
     
         })
     }
@@ -52,8 +58,10 @@ export default class CreateExercises extends Component{
                     contactnumber:response.data[0].contactnumber,
                     nickname:response.data[0].nickname,
                     birthdate:response.data[0].birthdate,
+                    onclickconfirm:1
 
         })
+        
 
     }else{
         alert("not found")
@@ -169,7 +177,7 @@ export default class CreateExercises extends Component{
             <h5>Please Upload the Application Form (PDF only)</h5>
             <form action="http://localhost:5000/users/up" enctype="multipart/form-data" method = "POST">
                     <input type="file" name="upl" accept=".pdf"/>
-                    <input type="submit" className="btn btn-primary" value="upload"/>
+                    <input type="submit" className="btn btn-primary" disabled={localStorage.getItem('username') === null} value="upload"/>
                 </form>
                 <br></br>
                 <h5>Please Confirm Applicant's Information Below</h5>
@@ -213,7 +221,7 @@ export default class CreateExercises extends Component{
                         <option value="" disabled selected hidden>Select</option>
                         </select>
                 </div></th></tr><tr>
-                <button type="submit" value="Create New Camp" className="btn btn-primary" onClick={this.onclickok}>Confirm Name</button>
+                <button type="submit" value="Create New Camp" className="btn btn-primary" disabled={localStorage.getItem('username') === null} onClick={this.onclickok}>Confirm Name </button>
                 </tr><tr>
                 <th><div className="form-group">
                     <label>Nickname: </label>
@@ -275,7 +283,7 @@ export default class CreateExercises extends Component{
                             size="20"
                             />
                     </div>
-                    <button type="submit" value="Create New Camp" className="btn btn-primary" onClick={this.test}>Get pdf</button>
+                    <button type="submit" value="Create New Camp" className="btn btn-primary" onClick={this.test} disabled={localStorage.getItem('username') === null || this.state.onclickconfirm === 0}>Get pdf</button>
                 
             
         </div>
