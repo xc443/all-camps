@@ -17,9 +17,9 @@ router.route('/confirm').post((req,res)=>{
         console.log(e)
     })
 })
-router.route('/confirm').get((req, res) => {
+router.route('/find').post((req, res) => {
     //     Exercise.find()
-    Exercise.find()
+    Exercise.find({username:req.body.username})
             .then(exercises => res.json(exercises))
             .catch(err => res.status(400).json('Error: ' + err));
     });

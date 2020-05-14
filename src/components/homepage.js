@@ -41,6 +41,7 @@ handleSubmitlog(event) {
           this.setState({
               getpasswordlog:response.data[0].password
   })
+  localStorage.setItem('username',this.state.emaillog)
 
 }else{
   alert("not found")

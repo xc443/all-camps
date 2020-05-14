@@ -30,9 +30,9 @@ export default class ExercisesList extends Component{
     }else{
     this.state={exercises: [],username:" "}}}
     componentDidMount(){
-            
+           let username = localStorage.getItem('username')
             // console.log(this.username)
-        axios.post('http://localhost:5000/exercises/getinfo',{username:this.state.username})
+        axios.post('http://localhost:5000/exercises/getinfo',{username:username})
          .then(response=>{if (response.data.length>0){
              this.setState({ exercises:response.data})}
             //  else{alert("no")}

@@ -112,7 +112,9 @@ export default class CreateExercises extends Component{
 
 
     componentDidMount(){
-        axios.get('http://localhost:5000/exercises/confirm')
+        let username = localStorage.getItem('username')
+        console.log(username)
+        axios.post('http://localhost:5000/exercises/find',{username:username})
          .then(response =>{
              if (response.data.length>0){
                  this.setState({
