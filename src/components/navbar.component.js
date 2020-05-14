@@ -19,7 +19,7 @@ export default class Navbar extends Component{
         
         localStorage.removeItem('username');
         console.log(localStorage.getItem('username'));
-        window.location.reload(true);
+        // window.location.reload(true);
         window.location = '/';
         
        
