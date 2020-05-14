@@ -27,7 +27,7 @@ router.route('/getinfo').post((req,res)=>{
     var mem= ""
     Exercise.find({username:req.body.username})
     .then((exercises )=>{
-        
+        // exercises.birthdate = exercises.birthdate.toDateString;
          res.status(200).json(exercises)
     }).catch((e)=>{
         console.log(e)

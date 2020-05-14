@@ -8,7 +8,7 @@ const Exercise = props =>(
         <td>{props.exercise.firstname}</td>
         <td>{props.exercise.lastname}</td>
         <td>{props.exercise.nickname}</td>
-        <td>{props.exercise.birthdate}</td>
+        <td>{new Date(props.exercise.birthdate).toDateString().split(' ').slice(1).join(' ')}</td>
         <td>{props.exercise.gender}</td>
         <td>{props.exercise.homeaddress}</td>
         <td>{props.exercise.contactnumber}</td>

@@ -46,7 +46,7 @@ export default class CreateUsers extends Component{
             gender:[],
             homeaddress:[],
             contactnumber:[],
-            birthdate:new Date(),
+            birthdate:null,
             age:[],
             homephone:[],
             workphone:[],
@@ -151,6 +151,9 @@ export default class CreateUsers extends Component{
             mode:1
         
         })
+
+        alert("New Applicant Added!");
+        window.location = '/info';
          
     }
 
@@ -397,7 +400,7 @@ export default class CreateUsers extends Component{
                         <label>Birth Date:  </label><br></br>
                         <DatePicker
                         placeholderText="Click to select a date"
-                            selected={this.state.birthdate}
+                            // selected={this.state.birthdate}
                             onChange={this.onChangeBirthdate}
                             dateFormat="MM/dd/yyyy"
                             isClearable
@@ -561,7 +564,7 @@ export default class CreateUsers extends Component{
                             
                             </tr>
                     </div>
-                    <input type="submit" value="Submit" className="btn btn-primary"></input>
+                    <input type="submit" value="Submit" className="btn btn-primary" disabled={localStorage.getItem('username') === null}></input>
                     <div>{ this.state.mode ?  'Add successfully':'' }</div>
                 </form>
                 
