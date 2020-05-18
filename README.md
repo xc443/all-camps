@@ -1,6 +1,6 @@
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
-# User Manual
+## User Manual
 
 1. Download the whole files from our GitHub
 2. In terminal, cd into `all-camps/backend` directory
