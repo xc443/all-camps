@@ -1,5 +1,15 @@
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
+## User Manual
+
+1. Download the whole files from our GitHub
+2. In terminal, cd into `all-camps/backend` directory
+3. Run `nodemon server` in terminal
+4. Go back to `all-camps` directory and run `npm start` in terminal
+5. The webpage should pop up automatically
+
+
+
 ## Available Scripts
 
 In the project directory, you can run:
