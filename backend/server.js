@@ -13,10 +13,10 @@ var multer = require('multer');
 
 app.use(cors());
 app.use(express.json());
-
+// { useMongoClient: true, connectWithNoPrimary: true }
 const uri = process.env.ATLAS_URI;
 //const uri = "mongodb://localhost:27017/test";
-mongoose.connect(uri, { useNewUrlParser: true, useCreateIndex: true });
+mongoose.connect(uri, { useNewUrlParser: true, useCreateIndex: true,connectWithNoPrimary: true,useUnifiedTopology: true });
 const connection = mongoose.connection;
 connection.once('open', () => {
     console.log("MongoDB database connection established successfully");
